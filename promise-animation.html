@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        background-color: black;
+    }
+
+    .container_main {
+        position: relative; 
+        
+    }
+
+    .container {
+        position: absolute;
+        margin-top: 25%;
+        display: flex;
+        flex-direction: row;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    
+    }
+
+    .loading{
+        color: aquamarine;
+    }
+
+    .anim {
+        width: 30px;
+        color: white;
+    }
+
+    .text {
+        width:150 px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: rgb(235, 80, 106);
+    }
+
+</style>
+
+</head>
+<body>
+    <div class="container_main">
+        <div class="container">
+            <div class="anim"></div>
+            <div class="text"><span class="loading">loading </span>module...</div>
+        </div>
+    </div>
+    
+    <script>
+
+        const anim = document.querySelector('.anim')
+        const text = document.querySelector('.text')
+
+        const arr = ['|', '/', '-', '\\', 'done!']
+
+        const intervalSet = 100
+
+        const asyncFnc = async() => {
+            await item1(intervalSet);
+            await item2(intervalSet);
+            await item3(intervalSet);
+            await item4(intervalSet);
+        }
+
+        function item1(interval) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(anim.innerHTML = arr[0])
+                }, interval )
+            })
+        }
+        function item2(interval) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(anim.innerHTML = arr[1])
+                }, interval )
+            })
+        }
+        function item3(interval) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(anim.innerHTML = arr[2])
+                }, interval )
+            })
+        }
+        function item4(interval) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(anim.innerHTML = arr[3])
+                }, interval )
+            })
+        }
+
+        function play() {
+             
+            interv = setInterval(asyncFnc, (intervalSet * 4))
+
+            setTimeout(() => {
+                text.style.color = 'yellow'
+                text.innerHTML = arr[4]
+                clearInterval(interv)
+                anim.style.color = 'black'
+                
+            }, 10000)
+        }
+        play()
+
+
+    </script>
+</body>
+</html>
