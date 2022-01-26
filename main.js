@@ -33,11 +33,7 @@ const asyncFnc = async() => {
 }
 
 // Promise function
-function frame(frameNumber) {
-    /**
-    * @type {number} customInterval
-    */
-    const customInterval = null
+function frame(frameNumber, customInterval = null) {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(framesAnimation.innerText = framesArray[frameNumber])
