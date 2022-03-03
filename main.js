@@ -26,42 +26,18 @@ const promiseInterval = 100;
 
 // async function
 const asyncFnc = async() => {
-    await frame1(promiseInterval); // frame 1
-    await frame2(promiseInterval); // frame 2
-    await frame3(promiseInterval); // frame 3
-    await frame4(promiseInterval); // frame 4
+    await frame(0); // frame 1
+    await frame(1); // frame 2
+    await frame(2); // frame 3
+    await frame(3); // frame 4
 }
 
-// frame 1 Promise function
-function frame1(promiseInterval) {
+// Promise function
+function frame(frameNumber, customInterval = null) {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(framesAnimation.innerText = framesArray[0])
-        }, promiseInterval );
-    })
-}
-// frame 2 Promise function
-function frame2(promiseInterval) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(framesAnimation.innerText = framesArray[1])
-        }, promiseInterval );
-    })
-}
-// frame 3 Promise function
-function frame3(promiseInterval) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(framesAnimation.innerText = framesArray[2])
-        }, promiseInterval );
-    })
-}
-// frame 4 Promise function
-function frame4(promiseInterval) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(framesAnimation.innerText = framesArray[3])
-        }, promiseInterval );
+            resolve(framesAnimation.innerText = framesArray[frameNumber])
+        }, customInterval || promiseInterval );
     })
 }
 
